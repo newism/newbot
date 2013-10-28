@@ -5,7 +5,8 @@ poppin = [
   "Clearing the cache",
   "The act of taking a number two.",
   "Clearing the backlog",
-  "Farting up a storm"
+  "Farting up a storm",
+  "Flush Permissions"
 ]
 
 module.exports = (robot) ->
