@@ -31,13 +31,13 @@ module.exports = (robot) ->
       console.log endpoint
   
       if err
-        msg.send "Im'd drunk :( #{err}"
+        msg.reply "Im'd drunk :( #{err}"
         return
   
       data = JSON.parse(body).data || false
   
       if(!data)
-        return msg.send "No beer found matching: #{query}"
+        return msg.reply "No beer found matching: #{query}"
   
       beer = if(query) then msg.random(data) else data
       brewery = msg.random beer.breweries || false
@@ -57,7 +57,7 @@ module.exports = (robot) ->
         if brewery.website
           msgText += " - #{brewery.website}"
 
-      msg.send msgText
+      msg.reply msgText
   
       if beer.labels
         msg.send beer.labels.large
