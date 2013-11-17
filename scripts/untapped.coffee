@@ -65,7 +65,7 @@ module.exports = (robot) ->
 
       msg.reply msgText
 
-      if beer.beer_label
+      if beer.beer_label && beer.beer_label != "https://untappd.s3.amazonaws.com/site/assets/images/temp/badge-beer-default.png"
         msg.send beer.beer_label
   
       return
