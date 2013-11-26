@@ -29,7 +29,7 @@ for suggestion, weight of lunchSuggestions
     bag.push suggestion
 
 module.exports = (robot) ->
-  robot.hear /What\'?s for lunch\?/i, (msg) ->
+  robot.hear /(What\'?s for lunch|foods)\?/i, (msg) ->
     # Pull an item out of the bag
     index = Math.floor(Math.random() * bag.length)
     suggestion = bag[index]
