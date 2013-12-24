@@ -7,7 +7,8 @@ poopin = [
   "Clearing the backlog",
   "Farting up a storm",
   "Flush Permissions",
-  "Playing Angry Birds… ummm what?"
+  "Playing Angry Birds… ummm what?",
+  "Saxmans grabbing his shoes"
 ]
 
 module.exports = (robot) ->
