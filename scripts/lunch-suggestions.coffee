@@ -40,10 +40,10 @@ module.exports = (robot) ->
     suggestion = bag[index]
     # Suggest it
     msg.send "How about: #{suggestion}"
-  
+
   robot.hear /(lunch (options|suggestions))/i, (msg) ->
     message = 'Here are the lunch options:\n';
     for suggestion, weight of lunchSuggestions
       message += "* #{suggestion}\n";
-      
+
     msg.send message
