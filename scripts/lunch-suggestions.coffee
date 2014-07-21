@@ -3,7 +3,6 @@
 
 # Lunch suggestions and weighting
 lunchSuggestions = {
-  "Indo Rice / Noodles": 1,
   "Bazinga Schnitty Wraps": 1,
   "Sad food court": 1,
   "Harrys Pies": 1,
@@ -18,8 +17,7 @@ lunchSuggestions = {
   "IGA": 1,
   "Embassy Cafe": 1,
   "Bread shop sandwhich": 4,
-  "Mall Thai (Thursdays, Fridays)": 4,
-  "Salad from place next to kebab place": 4
+  "Mall Thai (Thursdays, Fridays)": 4
 }
 
 # Bag of suggestions
