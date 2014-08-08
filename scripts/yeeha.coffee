@@ -3,5 +3,5 @@
 
 module.exports = (robot) ->
 
-  robot.hear /(yeeha)\?/i, (msg) ->
+  robot.hear /(ye+ha+)/i, (msg) ->
     msg.send "https://i.imgur.com/2pqWmsF.gif"
