@@ -41,9 +41,14 @@ module.exports = (robot) ->
                 sort: 1
             }).get() (error, response, html) ->
 
-            msg.send(error);
-            msg.send(JSON.stringify(response));
-            msg.send(html);
+
+            if res.statusCode isnt 200
+                msg.send "Request didn't come back HTTP 200 :("
+                return
+
+            msg.send error
+            msg.send html
+            msg.send JSON.stringify(response)
 
 
             if error
