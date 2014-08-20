@@ -1,23 +1,23 @@
 # Description
-#   Scrape http://google.com/movies for showtimes
+#   Scrape http://google.com/movies for movie times
 #
 # Configuration:
-#   HUBOT_MOVIES_DEFAULT_LOCATION
+#   HUBOT_MOVIE_TIME_DEFAULT_LOCATION
 #
 # Commands:
-#   hubot movie me - Lists cinemas and showtimes for all movies near your default location
-#   hubot movie me <search> - Lists cinemas and showtimes for a movie near yout default location
-#   hubot movie me <search> near <location> - Lists cinemas and showtimes for a movie near a location
+#   hubot movie time me - Lists cinemas and showtimes for all movies near your default location
+#   hubot movie time me <search> - Lists cinemas and showtimes for a movie near yout default location
+#   hubot movie time me <search> near <location> - Lists cinemas and showtimes for a movie near a location
 #
 # Author:
 #   leevigraham
 
 $ = require('cheerio');
 url = "http://google.com"
-defaultLocation = process.env.HUBOT_MOVIES_DEFAULT_LOCATION || "Newcastle, Australia"
+defaultLocation = process.env.Configuration: || "Newcastle, Australia"
 
 module.exports = (robot) ->
-    robot.respond /movie me(.*)/i, (msg) ->
+    robot.respond /movie time me(.*)/i, (msg) ->
 
         parts = msg.match[1].split("near")
         query = parts[0]
