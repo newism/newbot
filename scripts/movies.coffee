@@ -54,8 +54,8 @@ module.exports = (robot) ->
 
                 movies = $('.movie', html)
 
-                msg.reply html;
-                msg.reply movies.length + " movies found";
+#                msg.reply html;
+                msg.send movies.length + " movies found";
 
                 movies.each ->
                     movie = $(this)
@@ -101,4 +101,4 @@ module.exports = (robot) ->
 
                 responseData.push(url + response.req.path);
 
-                msg.reply responseData.join("\n");
+                msg.send responseData.join("\n");
