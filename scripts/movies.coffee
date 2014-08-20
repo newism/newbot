@@ -13,7 +13,7 @@
 #   leevigraham
 
 $ = require('cheerio');
-url = "http://google.com/movies"
+url = "http://google.com"
 defaultLocation = process.env.HUBOT_MOVIES_DEFAULT_LOCATION || "Newcastle, Australia"
 
 
@@ -30,11 +30,14 @@ module.exports = (robot) ->
 
         responseData = []
 
-        robot.http(url).query({
-            q: query.trim(),
-            near: location.trim(),
-            sort: 1
-        }).get() (error, response, html) ->
+        robot
+            .http(url)
+            .path("movies")
+            .query({
+                q: query.trim(),
+                near: location.trim(),
+                sort: 1
+            }).get() (error, response, html) ->
 
             if error
                 msg.reply "We couldn't load the url: #{err}"
@@ -81,5 +84,7 @@ module.exports = (robot) ->
 
                 responseData.push("");
                 moviesData.movies.push(movieData)
+
+            responseData.push(url+response.req.path);
 
             msg.send responseData.join("\n");
