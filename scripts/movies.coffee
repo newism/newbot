@@ -43,7 +43,11 @@ module.exports = (robot) ->
                 msg.reply "We couldn't load the url: #{err}"
                 return
 
-            movies = $('.movie', html).each ->
+            movies = $('.movie', html)
+
+            msg.reply movies.length + " movies found";
+
+            movies.each ->
                 movie = $(this)
                 movieName = $('.header h2', movie)
                 movieUrl = $('.header h2 a', movie)
@@ -87,4 +91,4 @@ module.exports = (robot) ->
 
             responseData.push(url + response.req.path);
 
-            msg.send responseData.join("\n");
+            msg.reply responseData.join("\n");
