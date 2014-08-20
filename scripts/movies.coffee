@@ -24,7 +24,7 @@ module.exports = (robot) ->
         location = parts[1] || defaultLocation
 
         msg.send(query + " - " + location);
-        return
+        msg.send(url);
 
         moviesData = {
             movies: []
@@ -44,6 +44,8 @@ module.exports = (robot) ->
             if error
                 msg.reply "We couldn't load the url: #{err}"
                 return
+
+            msg.reply html;
 
             movies = $('.movie', html)
 
