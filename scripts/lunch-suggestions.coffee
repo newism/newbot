@@ -1,7 +1,12 @@
 # Description:
-#   Sends a lunch suggestion
+#   Lunch suggestions and weighting
+#
+# Commands:
+#   hubot What's for lunch? - Provides a lunch suggestion
+#
+# Author:
+#   leevigraham
 
-# Lunch suggestions and weighting
 lunchSuggestions = {
   "Bazinga Schnitty Wraps": 1,
   "Sad food court": 1,
@@ -32,7 +37,7 @@ for suggestion, weight of lunchSuggestions
 
 module.exports = (robot) ->
 
-  robot.hear /(What\'?s for lunch|foods)\?/i, (msg) ->
+  robot.hear /(What\'?s for lunch|foods)\??/i, (msg) ->
     # Pull an item out of the bag
     index = Math.floor(Math.random() * bag.length)
     suggestion = bag[index]
