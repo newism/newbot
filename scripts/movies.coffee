@@ -55,7 +55,7 @@ module.exports = (robot) ->
                 movies = $('.movie', html)
 
 #                msg.reply html;
-                msg.send movies.length + " movies found";
+#                msg.send movies.length + " movies found";
 
                 movies.each ->
                     movie = $(this)
