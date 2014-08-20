@@ -16,13 +16,15 @@ $ = require('cheerio');
 url = "http://google.com"
 defaultLocation = process.env.HUBOT_MOVIES_DEFAULT_LOCATION || "Newcastle, Australia"
 
-
 module.exports = (robot) ->
     robot.respond /movie me(.*)/i, (msg) ->
 
         parts = msg.match[1].split("near")
         query = parts[0]
         location = parts[1] || defaultLocation
+
+        msg.send(query + " - " + location);
+        return
 
         moviesData = {
             movies: []
