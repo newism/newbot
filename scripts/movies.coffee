@@ -41,18 +41,16 @@ module.exports = (robot) ->
                 sort: 1
             }).get() (error, response, html) ->
 
+                if error
+                    msg.reply "We couldn't load the url: #{err}"
+                    return
 
                 if response.statusCode isnt 200
                     msg.send "Request didn't come back HTTP 200 :("
                     return
 
-                msg.send error
-                msg.send html
-
-                if error
-                    msg.reply "We couldn't load the url: #{err}"
-                    return
-
+#                msg.send error
+#                msg.send html
 
                 movies = $('.movie', html)
 
