@@ -14,7 +14,7 @@
 
 $ = require('cheerio');
 url = "http://google.com"
-defaultLocation = process.env.Configuration: || "Newcastle, Australia"
+defaultLocation = process.env.HUBOT_MOVIE_TIME_DEFAULT_LOCATION || "Newcastle, Australia"
 
 module.exports = (robot) ->
     robot.respond /movie time me(.*)/i, (msg) ->
