@@ -48,8 +48,6 @@ module.exports = (robot) ->
 
                 msg.send error
                 msg.send html
-                msg.send JSON.stringify(response)
-
 
                 if error
                     msg.reply "We couldn't load the url: #{err}"
