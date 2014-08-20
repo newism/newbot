@@ -41,11 +41,15 @@ module.exports = (robot) ->
                 sort: 1
             }).get() (error, response, html) ->
 
+            msg.send(error);
+            msg.send(JSON.stringify(response));
+            msg.send(html);
+
+
             if error
                 msg.reply "We couldn't load the url: #{err}"
                 return
 
-            msg.reply html;
 
             movies = $('.movie', html)
 
