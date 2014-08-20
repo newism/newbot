@@ -85,6 +85,6 @@ module.exports = (robot) ->
                 responseData.push("");
                 moviesData.movies.push(movieData)
 
-            responseData.push(url+response.req.path);
+            responseData.push(url + response.req.path);
 
             msg.send responseData.join("\n");
