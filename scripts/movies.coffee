@@ -49,6 +49,7 @@ module.exports = (robot) ->
 
             movies = $('.movie', html)
 
+            msg.reply html;
             msg.reply movies.length + " movies found";
 
             movies.each ->
