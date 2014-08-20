@@ -42,67 +42,67 @@ module.exports = (robot) ->
             }).get() (error, response, html) ->
 
 
-            if response.statusCode isnt 200
-                msg.send "Request didn't come back HTTP 200 :("
-                return
+                if response.statusCode isnt 200
+                    msg.send "Request didn't come back HTTP 200 :("
+                    return
 
-            msg.send error
-            msg.send html
-            msg.send JSON.stringify(response)
-
-
-            if error
-                msg.reply "We couldn't load the url: #{err}"
-                return
+                msg.send error
+                msg.send html
+                msg.send JSON.stringify(response)
 
 
-            movies = $('.movie', html)
+                if error
+                    msg.reply "We couldn't load the url: #{err}"
+                    return
 
-            msg.reply html;
-            msg.reply movies.length + " movies found";
 
-            movies.each ->
-                movie = $(this)
-                movieName = $('.header h2', movie)
-                movieUrl = $('.header h2 a', movie)
-                movieTrailer = $('.header .info.links a.fl', movie)
-                movieData = {
-                    name: movieName.text()
-                    url: movieUrl.attr('href') || false,
-                    trailer: movieTrailer.attr('href') || false,
-                    theaters: []
-                }
+                movies = $('.movie', html)
 
-                responseData.push(movieData.name);
-                responseData.push(Array(movieData.name.length + 1).join("="))
+                msg.reply html;
+                msg.reply movies.length + " movies found";
 
-                theaters = $('.theater', movie).each ->
-                    theater = $(this)
-                    theaterName = $("> div .name a", theater)
-                    theaterAddress = $("> div .address", theater)
-                    theaterData = {
-                        name: theaterName.text(),
-                        address: theaterAddress.text()
-                        showTimes: []
+                movies.each ->
+                    movie = $(this)
+                    movieName = $('.header h2', movie)
+                    movieUrl = $('.header h2 a', movie)
+                    movieTrailer = $('.header .info.links a.fl', movie)
+                    movieData = {
+                        name: movieName.text()
+                        url: movieUrl.attr('href') || false,
+                        trailer: movieTrailer.attr('href') || false,
+                        theaters: []
                     }
 
-                    theaterShowTimes = $("> .times > span", theater).each ->
-                        theaterShowTime = $(this)
-                        theaterData.showTimes.push(theaterShowTime.text().trim())
-                        theaterData
+                    responseData.push(movieData.name);
+                    responseData.push(Array(movieData.name.length + 1).join("="))
 
-                    # responseData.push(theaterData.name + " - " + theaterData.address);
-                    # responseData.push(theaterData.showTimes.join(", "));
-                    # responseData.push("");
+                    theaters = $('.theater', movie).each ->
+                        theater = $(this)
+                        theaterName = $("> div .name a", theater)
+                        theaterAddress = $("> div .address", theater)
+                        theaterData = {
+                            name: theaterName.text(),
+                            address: theaterAddress.text()
+                            showTimes: []
+                        }
 
-                    responseData.push(theaterData.name + " - " + theaterData.showTimes.join(", "));
+                        theaterShowTimes = $("> .times > span", theater).each ->
+                            theaterShowTime = $(this)
+                            theaterData.showTimes.push(theaterShowTime.text().trim())
+                            theaterData
 
-                    movieData.theaters.push(theaterData);
-                    movieData
+                        # responseData.push(theaterData.name + " - " + theaterData.address);
+                        # responseData.push(theaterData.showTimes.join(", "));
+                        # responseData.push("");
 
-                responseData.push("");
-                moviesData.movies.push(movieData)
+                        responseData.push(theaterData.name + " - " + theaterData.showTimes.join(", "));
 
-            responseData.push(url + response.req.path);
+                        movieData.theaters.push(theaterData);
+                        movieData
 
-            msg.reply responseData.join("\n");
+                    responseData.push("");
+                    moviesData.movies.push(movieData)
+
+                responseData.push(url + response.req.path);
+
+                msg.reply responseData.join("\n");
