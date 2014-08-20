@@ -42,7 +42,7 @@ module.exports = (robot) ->
             }).get() (error, response, html) ->
 
                 if error
-                    msg.reply "We couldn't load the url: #{err}"
+                    msg.reply "We couldn't load the url: #{error}"
                     return
 
                 if response.statusCode isnt 200
