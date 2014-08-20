@@ -42,7 +42,7 @@ module.exports = (robot) ->
             }).get() (error, response, html) ->
 
 
-            if res.statusCode isnt 200
+            if response.statusCode isnt 200
                 msg.send "Request didn't come back HTTP 200 :("
                 return
 
