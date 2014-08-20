@@ -23,8 +23,8 @@ module.exports = (robot) ->
         query = parts[0]
         location = parts[1] || defaultLocation
 
-        msg.send(query + " - " + location);
-        msg.send(url);
+#        msg.send(query + " - " + location);
+#        msg.send(url);
 
         moviesData = {
             movies: []
@@ -100,5 +100,6 @@ module.exports = (robot) ->
                     moviesData.movies.push(movieData)
 
                 responseData.push(url + response.req.path);
+
 
                 msg.send responseData.join("\n");
