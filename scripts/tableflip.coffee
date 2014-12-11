@@ -11,10 +11,10 @@
 mood = "happy"
 
 module.exports = (robot) ->
-    robot.hear /(fuck|shit|damn|damm|suck)/i, (msg) ->
+    robot.hear /(fuck|shit|damn|damm|suck|cunce|cunt)/i, (msg) ->
         mood = "mad"
         msg.send "(╯°□°)╯︵ ┻━┻"
-    robot.hear /(sorry,? newbot)/i, (msg) ->
+    robot.respond /sorry/i, (msg) ->
         if mood == "mad"
             msg.send('┬──┬ ノ( ゜-゜ノ)')
             mood = "happy"
